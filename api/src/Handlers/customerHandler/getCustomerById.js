@@ -17,4 +17,4 @@ const findCustomerById = require("../../Controllers/customerController/findCusto
     }
   };
 
-  module.exports=getCustomerById;
+  module.exports=getCustomerById; 

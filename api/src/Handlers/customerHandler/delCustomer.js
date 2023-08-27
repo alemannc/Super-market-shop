@@ -12,3 +12,4 @@ const delCustomer = async (req,res)=>{
 }
 
 module.exports=delCustomer;
+//asdasd
