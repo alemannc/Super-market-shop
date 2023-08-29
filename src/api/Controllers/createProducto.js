@@ -1,7 +1,7 @@
 const { Producto } = require("../src/db");
 
-const createProducto = async ( nombre, precio, descripcion, imagen, inventario, marca, vencimiento, categoria ) => {
-const newProducto = await Producto.create({ nombre, precio, descripcion, imagen, inventario, marca, vencimiento, categoria });  
+const createProducto = async ( name, price, description, image, stock, brand, expirationdate, categories ) => {
+const newProducto = await Producto.create({ name, price, description, image, stock, brand, expirationdate, categories });  
 console.log(newProducto)
 return newProducto;
 };

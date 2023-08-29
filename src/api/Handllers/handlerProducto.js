@@ -5,17 +5,17 @@ const router = Router();
 
 router.post("/", async (req, res) => {
     try {
-      const { nombre, precio, descripcion, imagen, inventario, marca, vencimiento, categoria } = req.body;
+      const { name, price, description, image, stock, brand, expirationdate, categories } = req.body;
   //console.log(req.body)
       const newProducto = await createProducto(
-        nombre,
-        precio,
-        descripcion,
-        imagen,
-        inventario,
-        marca,
-        vencimiento,
-        categoria
+        name,
+        price,
+        description,
+        image,
+        stock,
+        brand,
+        expirationdate,
+        categories
       );
   
       res.status(201).json(newProducto);
