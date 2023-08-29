@@ -24,5 +24,5 @@ module.exports = (sequelize) => sequelize.define('orderDetail', {
 // Define las relaciones con otros modelos si es necesario
 // Order_Detail.belongsTo(Product, { foreignKey: 'Porduct_Id' });
 // Order_Detail.belongsTo(Customer, { foreignKey: 'Customer_Id' });
-
+//asdasd
 

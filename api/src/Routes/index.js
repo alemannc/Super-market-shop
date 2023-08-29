@@ -8,4 +8,3 @@ router.use('/customer', customerRouter);
 router.use("/orderDetail",orderDetailRouter)
 
 module.exports = router;
-//asdasd
