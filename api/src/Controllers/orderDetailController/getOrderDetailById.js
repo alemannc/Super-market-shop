@@ -7,7 +7,7 @@ const getOrderDetailById= async (id)=>{
     const OrderDetailById = await OrderDetail.findByPk(id);
     console.log(OrderDetailById)
     if(OrderDetailById){
-        return OrderDetailById
+        return OrderDetailById;
     }else{
         return null;
     }

@@ -9,7 +9,7 @@ orderDetailRouter.post("/post", (req,res)=>{
 
 orderDetailRouter.get("/:id" ,(req,res)=>{
     getDetailById(req,res)
-})
+});
 
 
 module.exports = orderDetailRouter;
