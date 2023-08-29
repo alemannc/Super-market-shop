@@ -46,7 +46,7 @@ module.exports = (sequelize) => {
             values: ["Pendiente", "Aprobado", "Cancelado", "Rechazado", "Entregado","En Proceso"],
             defaultValue: "Pendiente",
         },
-        
 
-    })
+
+    },{ timestamps: false });
 };
