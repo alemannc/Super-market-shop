@@ -37,7 +37,16 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.NOW,
             allowNull: false,
         },
-
+        price: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        orderStatus: {
+            type: DataTypes.ENUM,
+            values: ["Pendiente", "Aprobado", "Cancelado", "Rechazado", "Entregado","En Proceso"],
+            defaultValue: "Pendiente",
+        },
         
+
     })
 };
