@@ -6,7 +6,6 @@ const postCustomer = require('../Handlers/customerHandler/postCustomer');
 const delCustomer = require('../Handlers/customerHandler/delCustomer');
 const putCustomer = require('../Handlers/customerHandler/putCustomer');
 
-
 customerRouter.get('/:id', (req,res)=>{
     getCustomerById(req,res);
 });

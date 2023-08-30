@@ -1,8 +1,10 @@
 const express = require("express");
 require("dotenv").config();
-const server = express();
-const routes = require('./Routes/index');
 const morgan = require('morgan');
+const routes = require('./Routes/index');
+
+const server = express();
+
 
 server.use(express.json());
 server.use('/',routes)
