@@ -2,15 +2,26 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const productModel = require("./Models/Product");
 const CustomerModel = require('./Models/Customer');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,DB_NAME
-} = process.env;
+const OrderDetailModel = require("./Models/OrderDetail");
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+const { DB_DEPLOY } = process.env;
+
+//const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+  //logging: false, // set to console.log to see the raw SQL queries
+  //native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//});
+
+const sequelize = new Sequelize(
+  DB_DEPLOY,
+  {
+    logging: false,
+    native: false,
+  }
+  );
+
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -32,9 +43,17 @@ sequelize.models = Object.fromEntries(capsEntries);
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 CustomerModel(sequelize);
-const { Customer,OrderDetail } = sequelize.models;
+productModel(sequelize);
+OrderDetailModel(sequelize);
+
+const { Product, Customer, Orderdetail } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
+
+// Ralacion cliente-Producto
+Customer.belongsToMany(Product, { through: "Customer-Product" });
+Product.belongsToMany(Customer, { through: "Customer-Product" });
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
