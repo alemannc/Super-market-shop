@@ -2,9 +2,10 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const productModel = require("./Models/Product");
-const CustomerModel = require('./Models/Customer');
-const OrderDetailModel = require("./Models/OrderDetail");
+const productModel = require("./Models/Product.js");
+const CustomerModel = require('./Models/Customer.js');
+const OrderDetailModel = require("./Models/OrderDetail.js");
+const OrderModel = require("./Models/Order.js");
 
 const { DB_DEPLOY } = process.env;
 
@@ -45,15 +46,23 @@ sequelize.models = Object.fromEntries(capsEntries);
 CustomerModel(sequelize);
 productModel(sequelize);
 OrderDetailModel(sequelize);
+OrderModel(sequelize);
 
-const { Product, Customer, Orderdetail } = sequelize.models;
+const { Product, Customer, Orderdetail, Order } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// Ralacion cliente-Producto
+// Ralacion cliente-Producto- muchos a muchos muchos clientes pueden comprar muchos productos
 Customer.belongsToMany(Product, { through: "Customer-Product" });
 Product.belongsToMany(Customer, { through: "Customer-Product" });
 
+// Relacion producto order-detail de muchos  muchos 
+Product.belongsToMany(Orderdetail, { through: "Product-Orderdetail" });
+Orderdetail.belongsToMany(Product, { through: "Product-Orderdetail" });
+
+// Relacion customer - Order Relacion de uno a muchos
+Customer.hasMany(Order, { foreignKey: 'clienteId' });
+Order.belongsTo(Customer, { foreignKey: 'clienteId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
