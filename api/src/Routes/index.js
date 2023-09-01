@@ -5,6 +5,7 @@ const productRoutes = require("./productRoutes");
 const getallProducts = require('./productRoutes');
 
 
+
 const router = Router();
 
 router.use('/customer', customerRouter);

@@ -10,6 +10,10 @@ productRouter.post('/',(req,res)=>{
 productRouter.get('/',(req,res)=>{
     getallProducts(req,res);
 });
+
+productRouter.get('/',(req,res)=>{
+    getBrands(req,res);
+});
     
 
 module.exports = productRouter;
