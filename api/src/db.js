@@ -5,7 +5,7 @@ const path = require('path');
 const productModel = require("./Models/Product.js");
 const CustomerModel = require('./Models/Customer.js');
 const OrderDetailModel = require("./Models/OrderDetail.js");
-
+const OrderModel = require("./Models/Order.js");
 
 const { DB_DEPLOY } = process.env;
 
@@ -47,6 +47,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 CustomerModel(sequelize);
 productModel(sequelize);
 OrderDetailModel(sequelize);
+OrderModel(sequelize);
 
 const { Product, Customer, Order, Orderdetail } = sequelize.models;
 // Aca vendrian las relaciones
