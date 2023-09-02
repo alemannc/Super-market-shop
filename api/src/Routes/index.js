@@ -10,7 +10,6 @@ const router = Router();
 router.use('/customer', customerRouter);
 router.use("/orderDetail",orderDetailRouter)
 router.use("/orders",ordersRouter);
-
 router.use("/product", productRoutes);
 router.use("/getallProducts", getallProducts );
 
