@@ -1,19 +1,24 @@
-import mercadopago from "mercadopago"
+const mercadopago = require("mercadopago")
 
 
-export const createOrder= async(req, res)=>{
-    const {customerID,price} = req.body
+const createOrder= async(req, res)=>{
+    
 
-    mercadopago.configure({
-        access_token:"TEST-4254155066905613-083117-bed830b094008bd4ea7785ee1a810bd3-1466908614"
+     mercadopago.configure({
+        access_token:"TEST-7448806304476546-090112-310996ac27e0fcc280c6453e355e53f9-1465680871"
     })
     
    const result= await mercadopago.preferences.create({
         items:[{
-            title:customerID,
-            unit_price: price,
+            title:"pollo",
+            unit_price: 1500,
             currency_id:"ARS",
             quantity:1,
         }]
     })
+
+    return result
 }
+
+
+module.export=createOrder;
