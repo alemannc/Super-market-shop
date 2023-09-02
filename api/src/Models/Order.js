@@ -1,46 +1,53 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) =>
-  sequelize.define(
-    "Order",
-    {
-      orderId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      orderDate: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-      },
-      customer_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+module.exports = (sequelize) => {
+    sequelize.define('order', {
+        Id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4, 
+            allowNull: false,
+        },
+       customerID: {
+            type: DataTypes.UUID,
+            allowNull: true,
+            Referecens: {
+                model: 'Customer',
+                key: 'customer_ID',
+            }
+        },
+        orderDetail: {
+            type: DataTypes.JSON,
+            allowNull: false, 
+        },
+        orderAdress: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            References: {
+                model: 'Customer',
+                key: 'email',
+            }
+        },
+        oderDate: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
+            allowNull: false,
+        },
+        price: {
+            type: DataTypes.FLOAT,
+            allowNull: false,
+        },
+        orderStatus: {
+            type: DataTypes.ENUM,
+            values: ["Pendiente", "Aprobado", "Cancelado", "Rechazado", "Entregado","En Proceso"],
+            defaultValue: "Pendiente",
+        },
 
-      order_detail: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
 
-      order_adress: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+    },{ timestamps: false });
+};
 
-      order_email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-
-      order_status: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    },
-    { timestamps: false }
-  );
