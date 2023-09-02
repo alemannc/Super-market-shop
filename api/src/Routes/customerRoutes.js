@@ -27,6 +27,6 @@ customerRouter.delete('/:id',(req,res)=>{
     delCustomer(req,res);
 });
     
-    module.exports= customerRouter;
+module.exports= customerRouter;
 
     
