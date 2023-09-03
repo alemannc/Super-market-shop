@@ -7,8 +7,8 @@ module.exports = (sequelize) => {
     "Product",
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4, // Or DataTypes.UUIDV1
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
       },
       name: {
