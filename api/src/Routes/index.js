@@ -3,6 +3,7 @@ const customerRouter = require('./customerRoutes');
 const orderDetailRouter = require("./orderDetailRoutes")
 const productRoutes = require("./productRoutes");
 const getallProducts = require('./productRoutes');
+const findProductById = require('./productRoutes');
 
 
 const ordersRouter = require("./ordersRouter")
@@ -15,7 +16,7 @@ router.use("/orderDetail",orderDetailRouter)
 router.use("/orders",ordersRouter);
 router.use("/product", productRoutes);
 router.use("/getallProducts", getallProducts );
-
+router.use("/product/:id", findProductById );
 
 
 
