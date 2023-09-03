@@ -1,7 +1,6 @@
 const { Router } = require("express");
 
 const findProductById = require("../../Controllers/productController/findProductById.js");
-
 const router = Router();
 
 router.get("/:id", async(req, res) => {
