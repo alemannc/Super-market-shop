@@ -3,7 +3,7 @@ const orderDetailRouter =express.Router();
 const postOrderDetail = require ("../Handlers/orderDetailHandler/postOrderDetail");
 const getDetailById = require("../Handlers/orderDetailHandler/getOrderDetailById")
 
-orderDetailRouter.post("/post", (req,res)=>{
+orderDetailRouter.post("/", (req,res)=>{
     postOrderDetail(req,res);
 });
 
