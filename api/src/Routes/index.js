@@ -2,11 +2,10 @@ const { Router } = require('express');
 const customerRouter = require('./customerRoutes');
 const orderDetailRouter = require("./orderDetailRoutes")
 const productRoutes = require("./productRoutes");
+const ordersRouter = require("./ordersRouter")
+
 //  const getallProducts = require('./productRoutes');
 // const findProductById = require('./productRoutes');
-
-
-const ordersRouter = require("./ordersRouter")
 
 
 const router = Router();

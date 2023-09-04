@@ -49,11 +49,12 @@ productModel(sequelize);
 OrderDetailModel(sequelize);
 OrderModel(sequelize);
 
-const { Product, Customer, Orderdetail, Order } = sequelize.models;
+const { Product, Customer, Order, Orderdetail } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
-// Ralacion cliente-Producto- muchos a muchos muchos clientes pueden comprar muchos productos
+//establece una asociación de muchos a uno entre "Producto" y "Marca", lo que significa que un producto pertenece a una marca. Brand.hasMany(Product) establece la asociación inversa de uno a muchos, lo que significa que una marca puede tener muchos productos.
+
 Customer.belongsToMany(Product, { through: "Customer-Product" });
 Product.belongsToMany(Customer, { through: "Customer-Product" });
 
