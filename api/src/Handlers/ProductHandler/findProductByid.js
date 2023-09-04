@@ -3,7 +3,7 @@ const { Router } = require("express");
 const findProductById = require("../../Controllers/productController/findProductById.js");
 const router = Router();
 
-router.get("/:id", async(req, res) => {
+const getProductById = async (req, res) => {
       const { id } = req.params;
       console.log(id)
   try {
@@ -16,6 +16,6 @@ router.get("/:id", async(req, res) => {
       res.status(500).json({ Error: error.message });
     }
   }
-});
+};
 
-module.exports = router;
+module.exports = getProductById;
