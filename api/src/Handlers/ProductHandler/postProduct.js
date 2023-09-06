@@ -3,7 +3,7 @@ const { Router }  = require("express");
 const createProducto = require("../../Controllers/productController/postProduct.js");
 const router = Router();
 
-router.post("/", async (req, res) => {
+const postCustomer = async (req,res)=>{
     try {
       const { name, price, description, image, stock, brand, expirationdate, categories } = req.body;
   //console.log(req.body)
@@ -26,6 +26,6 @@ router.post("/", async (req, res) => {
         res.status(500).json({ Error: error.message });
       }
     }
-  });
+  };
   
-  module.exports = router;
+  module.exports = postCustomer;
