@@ -5,7 +5,7 @@ const createOrderMP =require("../Controllers/mercadoPagoController/payment")
 mercadoPagoRouter.post("/create-order", (req,res)=>{
     createOrderMP(req,res)
 })
-mercadoPagoRouter.get("/succes", (req,res)=>{
+mercadoPagoRouter.get("/failure", (req,res)=>{
 
 })
 mercadoPagoRouter.post("/webhook", (req,res)=>{
