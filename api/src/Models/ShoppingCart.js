@@ -3,8 +3,8 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => sequelize.define("ShoppingCart", {
     id: {
         type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        autoIncrement: true,
     },
 
     QuantityProduct: {
@@ -22,7 +22,7 @@ module.exports = (sequelize) => sequelize.define("ShoppingCart", {
     PriceTotal: {
         type: DataTypes.FLOAT,
         defaultValue: 0,
-    }
-}, { timestamps: false });
+    },
+},{ timestamps: false });
 
 
