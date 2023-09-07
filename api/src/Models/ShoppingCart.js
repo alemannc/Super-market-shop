@@ -1,35 +1,12 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => sequelize.define('ShoppingCart', {
-    ShoppingCartId: {
-        type: DataTypes.INTEGER,
+module.exports = (sequelize) => sequelize.define("ShoppingCart", {
+    id: {
+        type: DataTypes.UUID,
         primaryKey: true,
         autoIncrement: true,
     },
-    CustomerID: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Customer',
-            key: 'customerID',
-        }
-    },
-    ProductId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Product',
-            key: 'id',
-        }
-    },
-    OrderId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Order',
-            key: 'Id',
-        }
-    },
+
     QuantityProduct: {
         type: DataTypes.INTEGER,
         allowNull: false,

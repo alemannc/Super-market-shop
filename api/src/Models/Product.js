@@ -48,7 +48,6 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: true,
       }, 
-      //DESCOMENTAR UNA VEZ AGREGADA LA PROPIEDAD EN DEPLOY DEL DB 
     },
     {
       timestamps: false, // Desactivar timestamps
