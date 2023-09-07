@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: true,
             Referecens: {
                 model: 'Customer',
-                key: 'customer_ID',
+                key: 'customerID',
             }
         },
         orderDetail: {

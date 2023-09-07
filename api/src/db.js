@@ -6,6 +6,7 @@ const productModel = require("./Models/Product.js");
 const CustomerModel = require('./Models/Customer.js');
 const OrderDetailModel = require("./Models/OrderDetail.js");
 const OrderModel = require("./Models/Order.js");
+const ShoppingCartModel = require('./Models/ShoppingCart.js');
 
 const { DB_DEPLOY } = process.env;
 
@@ -48,8 +49,9 @@ CustomerModel(sequelize);
 productModel(sequelize);
 OrderDetailModel(sequelize);
 OrderModel(sequelize);
+ShoppingCartModel(sequelize)
 
-const { Product, Customer, Orderdetail, Order } = sequelize.models;
+const { Product, Customer, Orderdetail, Order ,ShoppingCart} = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
@@ -62,9 +64,16 @@ Product.belongsToMany(Orderdetail, { through: "Product-Orderdetail" });
 Orderdetail.belongsToMany(Product, { through: "Product-Orderdetail" });
 
 // Relacion customer - Order Relacion de uno a muchos
-Customer.hasMany(Order, { foreignKey: 'clienteId' });
-Order.belongsTo(Customer, { foreignKey: 'clienteId' });
+Customer.hasMany(Order, { foreignKey: 'customerID' });
+Order.belongsTo(Customer, { foreignKey: 'customerID' });
 
+//Relacion carrito-producto Relacion muchos a muchos 
+ShoppingCart.belongsToMany(Product, { through: "ShoppingCart-Product" });
+Product.belongsToMany(ShoppingCart, { through: "ShoppingCart-Product" });
+
+//Relacion carrito-customer Relacion de uno a uno 
+ShoppingCart.hasOne(Customer, { foreignKey: 'customerID' });
+Customer.hasOne(ShoppingCart, { foreignKey: 'customerID' });
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
