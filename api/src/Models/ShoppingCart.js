@@ -1,35 +1,12 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => sequelize.define('ShoppingCart', {
-    ShoppingCartId: {
-        type: DataTypes.INTEGER,
+module.exports = (sequelize) => sequelize.define("ShoppingCart", {
+    id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
-        autoIncrement: true,
     },
-    CustomerID: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Customer',
-            key: 'customerID',
-        }
-    },
-    ProductId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Product',
-            key: 'id',
-        }
-    },
-    OrderId: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'Order',
-            key: 'Id',
-        }
-    },
+
     QuantityProduct: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -45,7 +22,7 @@ module.exports = (sequelize) => sequelize.define('ShoppingCart', {
     PriceTotal: {
         type: DataTypes.FLOAT,
         defaultValue: 0,
-    }
-}, { timestamps: false });
+    },
+},{ timestamps: false });
 
 
