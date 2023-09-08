@@ -8,14 +8,14 @@ module.exports = (sequelize) => {
             defaultValue: DataTypes.UUIDV4, 
             allowNull: false,
         },
-       customerID: {
-            type: DataTypes.UUID,
-            allowNull: true,
-            Referecens: {
-                model: 'Customer',
-                key: 'customer_ID',
-            }
-        },
+      // customerID: {
+         //   type: DataTypes.UUID,
+           // allowNull: true,
+          //  references: {
+               // model: 'Customer',
+             //   key: 'customerID',
+           // }
+       // },
         orderDetail: {
             type: DataTypes.JSON,
             allowNull: false, 
@@ -27,10 +27,10 @@ module.exports = (sequelize) => {
         email: {
             type: DataTypes.STRING,
             allowNull: true,
-            References: {
-                model: 'Customer',
-                key: 'email',
-            }
+         //   references: {
+           //     model: 'Customer',
+             //   key: 'email',
+           // }
         },
         oderDate: {
             type: DataTypes.DATE,
