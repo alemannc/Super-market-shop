@@ -1,11 +1,11 @@
 require('dotenv').config();
-  const { Sequelize } = require('sequelize');
-  const fs = require('fs');
-  const path = require('path');
-  const productModel = require("./Models/Product.js");
-  const CustomerModel = require('./Models/Customer.js');
-  const OrderModel = require("./Models/Order.js");
-  const ShoppingCartModel = require('./Models/ShoppingCart.js');
+const { Sequelize } = require('sequelize');
+const fs = require('fs');
+const path = require('path');
+const productModel = require("./Models/Product.js");
+const CustomerModel = require('./Models/Customer.js');
+const OrderModel = require("./Models/Order.js");
+const ShoppingCartModel = require('./Models/ShoppingCart.js');
 
 const { DB_DEPLOY } = process.env;
 
