@@ -4,7 +4,7 @@ const getallProducts = require("../../Controllers/productController/getallProduc
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+const getAll = async (req, res) => {
     try {
     const Products = await getallProducts();
       res.status(201).json(Products);
@@ -15,6 +15,6 @@ router.get("/", async (req, res) => {
         res.status(500).json({ Error: error.message });
       }
     }
-  });
+  };
 
-  module.exports = router;
+  module.exports = getAll;
