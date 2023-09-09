@@ -1,5 +1,6 @@
 const axios = require("axios");
-const deleteCustomer = require("../../Controllers/customerController/createCustomer");
+
+const deleteCustomer = require("../../Controllers/customerController/deleteCustomer");
 
 const delCustomer = async (req,res)=>{
     const {id}=req.params;
