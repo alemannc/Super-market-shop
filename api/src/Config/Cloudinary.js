@@ -11,7 +11,7 @@ cloudinary.config({
 
 const uploadImage = async (filePath) => {
     return await cloudinary.uploader.upload(filePath, {
-        folder: 'Uploads'
+        folder: 'SuperMarket'
     });
 }
 
