@@ -23,6 +23,10 @@ productRouter.get('/',(req,res)=>{
 productRouter.get('/:id',(req,res)=>{
     findProductById(req,res);
 });
+
+productRouter.get('/',(req,res)=>{
+    getBrands(req,res);
+});
     
 productRouter.put('/:productId',(req,res)=>{
     stockLogicalDeleteHandler(req,res);
