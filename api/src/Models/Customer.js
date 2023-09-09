@@ -45,6 +45,14 @@ module.exports = (sequelize) => {
               notEmpty: true,
             },
           },
+          role: {
+            type: DataTypes.ENUM("user", "admin"),
+            defaultValue: "user",
+          },
+          provider: {
+            type: DataTypes.ENUM("local", "google", "facebook"),
+            defaultValue: "local",
+          },
   
     },{ timestamps: false });
   };
