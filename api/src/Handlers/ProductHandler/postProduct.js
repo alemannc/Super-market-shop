@@ -7,9 +7,8 @@ const router = Router();
 
 const postProducto = async (req,res)=>{
   const { name, price, description, stock, brand, expirationdate, categories } = req.body;
-   const image = req.files.image.tempFilePath;
-   console.log("🚀 ~ file: postProduct.js:10 ~ postProducto ~ image:", image)
-
+   const image = req.files['image[]'].tempFilePath;
+   console.log("Request received. Image file path:", image);
   //console.log(req.body)
   try {
 
