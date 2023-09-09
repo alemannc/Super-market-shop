@@ -5,8 +5,8 @@ const ProductByName = async (req, res) => {
 
     try {
         const productName = await findProductByName(name)
-        if (productName.length < 1) {
-            return res.status(205).send({ error: "No se encontraron productos para tu búsqueda" });
+        if (productName.length === 0 ) {
+            return res.status(404).send({ error: "No se encontraron productos para tu búsqueda" });
         } else {
             return res.status(200).json(productName);
         }
