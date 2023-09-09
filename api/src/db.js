@@ -7,7 +7,7 @@ const CustomerModel = require('./Models/Customer.js');
 const OrderModel = require("./Models/Order.js");
 const ShoppingCartModel = require('./Models/ShoppingCart.js');
 
-const DB_DEPLOY = 'postgresql://postgres:yeHVm66dt7jg1DkHbPOs@containers-us-west-77.railway.app:6366/railway'
+const { DB_DEPLOY } = process.env;
 
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
 //   logging: false, // set to console.log to see the raw SQL queries
@@ -16,11 +16,11 @@ const DB_DEPLOY = 'postgresql://postgres:yeHVm66dt7jg1DkHbPOs@containers-us-west
 
 const sequelize = new Sequelize(
   DB_DEPLOY,
-  {
-    logging: false,
-    native: false,
-  }
-);
+ {
+   logging: false,
+   native: false,
+ }
+  );
 
 
 const basename = path.basename(__filename);
@@ -49,7 +49,7 @@ productModel(sequelize);
 OrderModel(sequelize);
 ShoppingCartModel(sequelize)
 
-const { Product, Customer, Order, ShoppingCart } = sequelize.models;
+const { Product, Customer, Order ,ShoppingCart} = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
@@ -69,7 +69,7 @@ Product.belongsToMany(ShoppingCart, { through: "ShoppingCart-Product", timestamp
 //Relacion carrito-customer Relacion de uno a uno 
 
 ShoppingCart.belongsTo(Customer, { foreignKey: "CustomerId" });
-Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" });
+Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" } );
 
 
 module.exports = {
