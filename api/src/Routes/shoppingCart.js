@@ -1,7 +1,8 @@
 const express = require("express")
 const shoppingCartRouter =express.Router();
 const postShoppingCart = require ("../Handlers/shoppingCartHandler/postSCHandler")
-const updateShoppingCart= require('../Handlers/shoppingCartHandler/putSCHandler')
+const putSCHandler= require('../Handlers/shoppingCartHandler/putSCHandler')
+const getSCHandler = require('../Handlers/shoppingCartHandler/getSCHandler')
 const getShoppingCartById= require("../Handlers/shoppingCartHandler/ByIdSCHandler")
 
 shoppingCartRouter.post('/',(req,res)=>{
@@ -9,7 +10,11 @@ shoppingCartRouter.post('/',(req,res)=>{
 });
 
 shoppingCartRouter.put('/',(req,res)=>{
-    updateShoppingCart(req,res);
+    putSCHandler(req,res);
+});
+
+shoppingCartRouter.get('/',(req,res)=>{
+    getSCHandler(req,res);
 });
 
 
