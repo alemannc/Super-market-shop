@@ -5,7 +5,7 @@ const router = Router();
 
 const getProductById = async (req, res) => {
       const { id } = req.params;
-      console.log(id)
+      // console.log(id)
   try {
     const product = await findProductById(id);
     res.status(201).json(product);

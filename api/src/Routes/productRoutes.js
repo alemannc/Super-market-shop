@@ -8,7 +8,7 @@ const ProductByName = require('../Handlers/ProductHandler/findProductByName.js')
 
 productRouter.post('/',(req,res)=>{
      postProduct(req,res);
-  console.log("🚀 ~ file: productRoutes.js:11 ~ productRouter.post ~ req:", req.files)
+//  console.log("🚀 ~ file: productRoutes.js:11 ~ productRouter.post ~ req:", req.files)
  });
     
 productRouter.get('/name',(req,res)=>{
