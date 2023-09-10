@@ -7,9 +7,8 @@ const router = Router();
 
 const postProducto = async (req,res)=>{
   const { name, price, description, stock, brand, expirationdate, categories } = req.body;
-   const image = req.files.image.tempFilePath;
-   console.log("🚀 ~ file: postProduct.js:10 ~ postProducto ~ image:", image)
-
+   const image = req.files['image[]'].tempFilePath;
+   console.log("Request received. Image file path:", image);
   //console.log(req.body)
   try {
 
@@ -20,6 +19,16 @@ const postProducto = async (req,res)=>{
           cleaner()
         }
        }
+       
+       const foundCategory = await Category.findOne({
+        where: { name: categories },
+      });
+      
+      if (!foundCategory) {
+        return res.status(404).json({ Error: `La categoría '${categories}' no fue encontrada.` });
+      } else {
+         category = foundCategory.id;
+      }
 
       const newProducto = await createProduct(
         name,
@@ -29,7 +38,7 @@ const postProducto = async (req,res)=>{
         stock,
         brand,
         expirationdate,
-        categories
+        category,
       );
   
       res.status(201).json(newProducto);
