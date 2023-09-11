@@ -3,14 +3,15 @@ const { Router }  = require("express");
 const createProduct = require("../../Controllers/productController/postProduct.js");
 const uploadImage = require("../../Config/Cloudinary.js");
 const cleaner = require('../../Config/cleaner');
+const { Category } = require('../../db.js');
 const router = Router();
 
 const postProducto = async (req,res)=>{
   const { name, price, description, stock, brand, expirationdate, categories } = req.body;
-   const image = req.files.image.tempFilePath;
-   console.log("🚀 ~ file: postProduct.js:10 ~ postProducto ~ image:", image)
-
-  //console.log(req.body)
+   const image = req.files['image[]'].tempFilePath;
+  //  const image = req.files.image.tempFilePath;
+    console.log("Request received. Image file path:", image);
+  // console.log(req.body)
   try {
 
        const imageUrl = await uploadImage(image);
@@ -20,6 +21,16 @@ const postProducto = async (req,res)=>{
           cleaner()
         }
        }
+       
+      //  const foundCategory = await Category.findOne({
+      //   where: { name: categories },
+      // });
+      
+      // if (!foundCategory) {
+      //   return res.status(404).json({ Error: `La categoría '${categories}' no fue encontrada.` });
+      // } else {
+      //   categories = foundCategory.id;
+      // }
 
       const newProducto = await createProduct(
         name,
