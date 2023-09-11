@@ -2,13 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const morgan = require('morgan');
 const routes = require('./Routes/index');
-<<<<<<< HEAD
 const cors = require("cors");
-=======
-const cors = require('cors');
-const fileUpload = require("express-fileupload");
-
->>>>>>> e596da750f658ca353ce70a08e8dcbdb586df83a
 const server = express();
 
 
@@ -28,12 +22,12 @@ server.use((req, res, next) => {
 });
 
 // IMAGES DESDE EL FRONT 
-server.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "./uploads/",
-  })
-);
+// server.use(
+//   fileUpload({
+//     useTempFiles: true,
+//     tempFileDir: "./uploads/",
+//   })
+// );
 
 server.use('/',routes)
 server.use(morgan('dev'));
