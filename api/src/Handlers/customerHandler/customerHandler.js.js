@@ -64,19 +64,20 @@ const postCustomer = async (req,res)=>{
 }//
 
 const putCustomer = async (req,res)=>{
-    const {customer_id,name,email,address,password,phone} = req.body;
-
-    if(!customer_id||!name||!email||!address||!password||!phone){
+    const {customer_id,name,email,address,password,phone,role} = req.body;
+    console.log('Recibida solicitud de actualización de usuario:', req.params.id);
+    if(!customer_id||!name||!email||!address||!password||!phone||!role){
         res.status(401).json({error:'Missing data!'});
     }
     
     try {
-        const updatedCustomer= await updateCostumer(customer_id,{name,email,address,password,phone});
+        const updatedCustomer= await updateCostumer(customer_id,{name,email,address,password,phone,role});
         res.status(200).json(updatedCustomer);
+        console.log('Usuario actualizado correctamente');
     } catch (error) {
+      console.error('Error al actualizar el usuario:', error);
         res.status(500).json({error:'Customer not modified: ' + error.message});
     }
-
 }
 
 const delCustomer = async (req,res)=>{
