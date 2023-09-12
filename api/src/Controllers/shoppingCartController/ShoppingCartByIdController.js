@@ -1,9 +1,9 @@
-const { Customer } = require("../../db");
+const { ShoppingCart } = require("../../db");
 
 const findShoppingCartById = async (id) => {
-  const customer = await Customer.findByPk(id);
-  console.log(id)
-  return customer;
-};
+     const ShoppingCartFind = await ShoppingCart.findOne({
+           where: {CustomerId: id}   
+          });      
+          return ShoppingCartFind; };
 
 module.exports = findShoppingCartById;
