@@ -5,10 +5,17 @@ const getCustomers = require('../Handlers/customerHandler/getCustomers');
 const postCustomer = require('../Handlers/customerHandler/postCustomer');
 const delCustomer = require('../Handlers/customerHandler/delCustomer');
 const putCustomer = require('../Handlers/customerHandler/putCustomer');
+const byEmail = require('../Handlers/customerHandler/byEmailHandler');
+
+
+customerRouter.get('/email',(req,res)=>{
+    byEmail(req,res);
+});
 
 customerRouter.get('/:id', (req,res)=>{
     getCustomerById(req,res);
 });
+
     
 customerRouter.get('/',(req,res)=>{
     getCustomers(req,res);
