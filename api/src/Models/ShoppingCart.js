@@ -15,10 +15,6 @@ module.exports = (sequelize) => sequelize.define("ShoppingCart", {
         type:  DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
     },
-    SubPrice: {
-        type: DataTypes.ARRAY(DataTypes.FLOAT),
-        allowNull: false,
-    },
     PriceTotal: {
         type: DataTypes.FLOAT,
         defaultValue: 0,
