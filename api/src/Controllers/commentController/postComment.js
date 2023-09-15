@@ -1,6 +1,6 @@
 const { Comment } = require("../../db.js");
 
-const createComment = async (id, text, calification, userName) => {
+const createComment = async ( id, text, calification, userName) => {
 
     const newComment = await Comment.create({
         id: id,
