@@ -3,7 +3,7 @@ const findByEmail = require ('../../Controllers/customerController/byEmailCustoe
 
 const byEmail = async (req, res) => {
     const {email}  = req.query;
-    console.log("🚀 ~ file: byEmailHandler.js:6 ~ byEmail ~ email:", email)
+    // console.log("🚀 ~ file: byEmailHandler.js:6 ~ byEmail ~ email:", email)
   try {
     const byEmail = await findByEmail(email);
     if (byEmail.length){

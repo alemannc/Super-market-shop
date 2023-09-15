@@ -2,15 +2,15 @@ const createShoppingCart = require("../../Controllers/shoppingCartController/pos
 
 
 const postShoppingCart = async (req,res)=>{
-    const {QuantityProduct,ProductName,SubPrice,PriceTotal,customerId} = req.body;
-    console.log(QuantityProduct,ProductName,SubPrice,PriceTotal,customerId, "HANDLEER")
+    const {ProductName,PriceTotal,customerId} = req.body;
+    console.log(ProductName,PriceTotal,customerId, "HANDLEER")
     
     try {
-        if(!QuantityProduct||!ProductName||!SubPrice||!PriceTotal||!customerId){
+        if(!ProductName||!PriceTotal||!customerId){
             res.status(401).json({error:'Missing data!'});
         }else{
 
-            const newShoppingCart= await createShoppingCart({QuantityProduct,ProductName,SubPrice,PriceTotal,customerId});
+            const newShoppingCart= await createShoppingCart({ProductName,PriceTotal,customerId});
             res.status(200).json(newShoppingCart);
         }
     } catch (error) {
