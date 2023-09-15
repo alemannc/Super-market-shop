@@ -7,6 +7,7 @@ const CustomerModel = require('./Models/Customer.js');
 const OrderModel = require("./Models/Order.js");
 const ShoppingCartModel = require('./Models/ShoppingCart.js');
 const CategoryModel = require('./Models/Category.js');
+const CommentModel = require("./Models/Comment.js");
 
 const { DB_DEPLOY } = process.env;
 
@@ -50,8 +51,10 @@ productModel(sequelize);
 OrderModel(sequelize);
 ShoppingCartModel(sequelize);
 CategoryModel(sequelize);
+CategoryModel(sequelize);
+CommentModel(sequelize);
 
-const { Product, Customer, Order ,ShoppingCart, Category } = sequelize.models;
+const { Product, Customer, Order ,ShoppingCart, Category, Comment } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
@@ -76,6 +79,10 @@ Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" } );
 // REALACION CATEGORIAS en modelos
 Category.belongsToMany(Product, { through: "Category-Product", timestamps: true });
 Product.hasOne(Category, { foreignKey: "id" });
+
+
+Comment.belongsTo(Customer, { foreignKey: "CustomerId" });
+Customer.hasOne(Comment, { foreignKey: "CustomerId" } );
 
 
 module.exports = {
