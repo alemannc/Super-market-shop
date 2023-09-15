@@ -11,7 +11,7 @@ const productUpdateController = async (id, updatedProductData) => {
 
     await productUpdate.update(updatedProductData);
 
-    console.log("🚀 ~ file: putStockLogicalDelete.js:15 ~ productUpdateController ~ productUpdate:", productUpdate)
+    // console.log("🚀 ~ file: putStockLogicalDelete.js:15 ~ productUpdateController ~ productUpdate:", productUpdate)
     return productUpdate;
 }
 
