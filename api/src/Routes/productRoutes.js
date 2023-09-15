@@ -5,10 +5,11 @@ const getallProducts = require("../Handlers/ProductHandler/getallProducts.js");
 const getProductById = require("../Handlers/ProductHandler/findProductByid.js")
 const stockLogicalDeleteHandler = require('../Handlers/ProductHandler/putStockLogicalDelete.js')
 const ProductByName = require('../Handlers/ProductHandler/findProductByName.js')
+const delProduct = require ('../Handlers/ProductHandler/delProduct.js')
 
 productRouter.post('/',(req,res)=>{
      postProduct(req,res);
-//  console.log("🚀 ~ file: productRoutes.js:11 ~ productRouter.post ~ req:", req.files)
+  console.log("🚀 ~ file: productRoutes.js:11 ~ productRouter.post ~ req:", req.body, req.files)
  });
     
 productRouter.get('/name',(req,res)=>{
@@ -33,6 +34,8 @@ productRouter.put('/:productId',(req,res)=>{
     stockLogicalDeleteHandler(req,res);
 });
 
-
+// productRouter.delete('/:id',(req,res)=>{
+//     delProduct(req,res);
+// });
 
 module.exports = productRouter;
