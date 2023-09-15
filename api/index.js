@@ -6,20 +6,20 @@ const { conn } = require('./src/db');
 
 
 conn.sync({
-  alter: {
+  alter:  {
     modify: true,
     drop: false,
-  },
+  }, 
 }).then(() => {
   server.listen(PORT, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 })
-
-.then(async () => {
-  await transporter.verify().then(() => {
-    console.log("Email service: ✅");
+  
+  .then(async () => {
+    await transporter.verify().then(() => {
+      console.log("Email service: ✅");
+    });
   });
-});
-
+  
   
