@@ -8,7 +8,7 @@ const putCustomer = require('../Handlers/customerHandler/putCustomer');
 const byEmail = require('../Handlers/customerHandler/byEmailHandler');
 const login = require('../Handlers/customerHandler/loginCustomer');
 
-customerRouter.get('/login',(req,res)=>{
+customerRouter.post('/login',(req,res)=>{
     login(req,res);
 });
 

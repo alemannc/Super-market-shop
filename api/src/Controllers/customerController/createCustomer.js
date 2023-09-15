@@ -6,7 +6,7 @@ const findByEmail = require('./byEmailCustoemer');
 const createCustomer = async ({ name, email, address, password, phone, role, provider }) => {
     const verify = await findByEmail(email)
     if (verify.length > 0) {
-        return verify
+        return { error: 'User already exist' }
     }
     const customer = {
         name: name,
