@@ -84,9 +84,12 @@ Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" } );
 Category.belongsToMany(Product, { through: "Category-Product", timestamps: false });
 Product.belongsToMany(Category, { through: "Category-Product", timestamps: false });
 
+// Relacion comentarios cliente
 
-Comment.belongsTo(Customer, { foreignKey: "CustomerId" });
-Customer.hasOne(Comment, { foreignKey: "CustomerId" } );
+Comment.belongsToMany(Customer, { through: "Comment-Customer", timestamps: false });
+Customer.belongsToMany(Comment, { through: "Comment-Customer", timestamps: false });
+//Comment.belongsTo(Customer, { foreignKey: "CustomerId" });
+//Customer.hasOne(Comment, { foreignKey: "CustomerId" } );
 
 
 module.exports = {
