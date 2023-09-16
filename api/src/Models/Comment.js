@@ -5,11 +5,9 @@ module.exports = (sequelize) => {
         "Comment",
         {
         id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoincrement: true,
-            allowNull: false,
-    
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
+          primaryKey: true,
         },
         text: {
             type: DataTypes.STRING,
@@ -23,15 +21,9 @@ module.exports = (sequelize) => {
             max: 5,
             },
         },
-        userName: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          defaultValue: "Customer"
-        }
         },
         { timestamps: false }
     );
-    return Comment;
 };
 
 
