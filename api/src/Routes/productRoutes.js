@@ -26,6 +26,16 @@ productRouter.get('/',(req,res)=>{
     
   });
 
+ productRouter.get('/productByCategory/:id',(req,res)=>{
+    console.log('entro a routes')
+    getProductsByCategory(req,res);
+
+ });
+ productRouter.get('/categories',(req,res)=>{
+    getProductsByCategories(req, res);
+    
+  });
+
 productRouter.get('/:id',(req,res)=>{
     getProductById(req,res);
 });
