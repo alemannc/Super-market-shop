@@ -39,10 +39,10 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      categories: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // categories: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
 
      available: {
         type: DataTypes.BOOLEAN,

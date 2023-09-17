@@ -7,13 +7,14 @@ const CustomerModel = require('./Models/Customer.js');
 const OrderModel = require("./Models/Order.js");
 const ShoppingCartModel = require('./Models/ShoppingCart.js');
 const CategoryModel = require('./Models/Category.js');
+ const { DB_DEPLOY } = process.env;
 
-const { DB_DEPLOY } = process.env;
-
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+// const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
+// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
+
 
 const sequelize = new Sequelize(
   DB_DEPLOY,
@@ -56,8 +57,8 @@ const { Product, Customer, Order ,ShoppingCart, Category } = sequelize.models;
 // Product.hasMany(Reviews);
 
 // Ralacion cliente-Producto- muchos a muchos muchos clientes pueden comprar muchos productos
-Customer.belongsToMany(Product, { through: "Customer-Product", timestamps: true });
-Product.belongsToMany(Customer, { through: "Customer-Product", timestamps: true });
+Customer.belongsToMany(Product, { through: "Customer-Product", timestamps: false });
+Product.belongsToMany(Customer, { through: "Customer-Product", timestamps: false });
 
 // Relacion customer - Order Relacion de uno a muchos
 
@@ -65,8 +66,8 @@ Customer.hasMany(Order, { foreignKey: 'CustomerID' });
 Order.belongsTo(Customer);
 
 //Relacion carrito-producto Relacion muchos a muchos 
-ShoppingCart.belongsToMany(Product, { through: "ShoppingCart-Product", timestamps: true });
-Product.belongsToMany(ShoppingCart, { through: "ShoppingCart-Product", timestamps: true });
+ShoppingCart.belongsToMany(Product, { through: "ShoppingCart-Product", timestamps: false });
+Product.belongsToMany(ShoppingCart, { through: "ShoppingCart-Product", timestamps: false });
 
 //Relacion carrito-customer Relacion de uno a uno 
 
@@ -74,8 +75,8 @@ ShoppingCart.belongsTo(Customer, { foreignKey: "CustomerId" });
 Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" } );
 
 // REALACION CATEGORIAS en modelos
-Category.belongsToMany(Product, { through: "Category-Product", timestamps: true });
-Product.hasOne(Category, { foreignKey: "id" });
+Category.belongsToMany(Product, { through: "Category-Product", timestamps: false });
+Product.belongsToMany(Category, { through: "Category-Product", timestamps: false });
 
 
 module.exports = {
