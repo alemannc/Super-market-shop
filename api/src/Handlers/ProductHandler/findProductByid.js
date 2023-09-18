@@ -1,7 +1,4 @@
-const { Router } = require("express");
-
 const findProductById = require("../../Controllers/productController/findProductById.js");
-const router = Router();
 
 const getProductById = async (req, res) => {
       const { id } = req.params;
