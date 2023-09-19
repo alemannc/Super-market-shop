@@ -91,6 +91,7 @@ Product.belongsToMany(Category, { through: "Category-Product", timestamps: false
 Comment.belongsTo(Customer, { foreignKey: 'customerId', unique: true });
 Customer.hasOne(Comment, { foreignKey: 'customerId', unique: true });
 
+// Productos -- Cometnarios
 Comment.belongsTo(Product, { foreignKey: 'productId', unique: true });
 Product.hasOne(Comment, { foreignKey: 'productId', unique: true  });
 
