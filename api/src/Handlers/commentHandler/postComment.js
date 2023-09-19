@@ -4,8 +4,7 @@ const router = Router();
 
 const comments = async (req, res) => {
   const { content, calification, customerId, productId } = req.body; 
-  console.log(content);
-  console.log(calification);
+
   try {
     const newComment = await createComment( content, calification, customerId,productId);
     res.status(201).json(newComment);
