@@ -91,6 +91,9 @@ Product.belongsToMany(Category, { through: "Category-Product", timestamps: false
 Comment.belongsTo(Customer, { foreignKey: 'customerId', unique: true });
 Customer.hasOne(Comment, { foreignKey: 'customerId', unique: true });
 
+Comment.belongsTo(Product, { foreignKey: 'productId', unique: true });
+Product.hasOne(Comment, { foreignKey: 'productId', unique: true  });
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
