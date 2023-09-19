@@ -1,6 +1,7 @@
 require("dotenv").config();
 const server = require("./src/app");
 const transporter = require("./src/Nodemailer/postEmail.js");
+const productMouckup = require("./src/Helpers/productMouckup.js");
 const PORT = process.env.PORT || 3001;
 const { conn } = require('./src/db');
 
@@ -21,5 +22,10 @@ conn.sync({
       console.log("Email service: ✅");
     });
   });
+
+ // .then (() => {
+//productMouckup()
+
+  //})
   
   
