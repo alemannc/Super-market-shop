@@ -1,7 +1,6 @@
 const {ShoppingCart,Customer} = require ("../../db")
 
 const createShoppingCart = async({ProductName,PriceTotal,customerId})=>{
-    console.log(ProductName,PriceTotal,customerId, "CONTROLLER")
     const customer = await Customer.findByPk(customerId);
     if(customer){
         const newShoppingCart = await ShoppingCart.create({ProductName,PriceTotal,CustomerId:customerId})
