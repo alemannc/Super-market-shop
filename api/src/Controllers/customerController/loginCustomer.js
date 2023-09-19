@@ -23,6 +23,7 @@ const loginCustomer = async (email, password) => {
             email: customer[0].email,
             phone: customer[0].phone,
             address: customer[0].address,
+            role: customer[0].role,
             provider: customer[0].provider,
             token: token
         }

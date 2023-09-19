@@ -7,7 +7,11 @@ const CustomerModel = require('./Models/Customer.js');
 const OrderModel = require("./Models/Order.js");
 const ShoppingCartModel = require('./Models/ShoppingCart.js');
 const CategoryModel = require('./Models/Category.js');
+
+const CommentModel = require("./Models/Comment.js");
+
  const { DB_DEPLOY } = process.env;
+
 
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
@@ -51,8 +55,10 @@ productModel(sequelize);
 OrderModel(sequelize);
 ShoppingCartModel(sequelize);
 CategoryModel(sequelize);
+CategoryModel(sequelize);
+CommentModel(sequelize);
 
-const { Product, Customer, Order ,ShoppingCart, Category } = sequelize.models;
+const { Product, Customer, Order ,ShoppingCart, Category, Comment } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
@@ -78,6 +84,16 @@ Customer.hasOne(ShoppingCart, { foreignKey: "CustomerId" } );
 Category.belongsToMany(Product, { through: "Category-Product", timestamps: false });
 Product.belongsToMany(Category, { through: "Category-Product", timestamps: false });
 
+// Relacion comentarios cliente
+
+//Comment.belongsToMany(Customer, { through: "Comment-Customer", timestamps: false });
+//Customer.belongsToMany(Comment, { through: "Comment-Customer", timestamps: false });
+Comment.belongsTo(Customer, { foreignKey: 'customerId', unique: true });
+Customer.hasOne(Comment, { foreignKey: 'customerId', unique: true });
+
+// Productos -- Cometnarios
+Comment.belongsTo(Product, { foreignKey: 'productId', unique: true });
+Product.hasOne(Comment, { foreignKey: 'productId', unique: true  });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
