@@ -1,16 +1,8 @@
 const { Comment ,Product } = require("../../db");
 
 const getallComment = async () => {
-    const CommentFind= await Comment.findAll({
-        include:{
-            model: Product,
-            attributes: ['name'],
-            through:{
-              attributes:[]
-            }
-          }
-
-    });
+    const CommentFind= await Comment.findAll();
+    
     if(CommentFind.length>0){
     return CommentFind;
     }else{
