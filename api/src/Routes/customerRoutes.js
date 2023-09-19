@@ -13,7 +13,7 @@ customerRouter.post('/login',(req,res)=>{
     login(req,res);
 });
 
-customerRouter.get('/email', verifyToken ,(req,res)=>{
+customerRouter.get('/email',(req,res)=>{
     byEmail(req,res);
 });
 
