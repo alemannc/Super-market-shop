@@ -3,9 +3,9 @@ const createComment = require("../../Controllers/commentController/postComment.j
 const router = Router();
 
 const comments = async (req, res) => {
-  const { text, calification, userName } = req.body; 
+  const { content, calification } = req.body; 
   try {
-    const newComment = await createComment( text, calification, userName);
+    const newComment = await createComment( content, calification);
     res.status(201).json(newComment);
   } catch (error) {
     if (error.status === 404) {

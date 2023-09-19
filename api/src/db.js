@@ -86,11 +86,10 @@ Product.belongsToMany(Category, { through: "Category-Product", timestamps: false
 
 // Relacion comentarios cliente
 
-Comment.belongsToMany(Customer, { through: "Comment-Customer", timestamps: false });
-Customer.belongsToMany(Comment, { through: "Comment-Customer", timestamps: false });
-//Comment.belongsTo(Customer, { foreignKey: "CustomerId" });
-//Customer.hasOne(Comment, { foreignKey: "CustomerId" } );
-
+//Comment.belongsToMany(Customer, { through: "Comment-Customer", timestamps: false });
+//Customer.belongsToMany(Comment, { through: "Comment-Customer", timestamps: false });
+Comment.belongsTo(Customer, { foreignKey: 'customerId', unique: true });
+Customer.hasOne(Comment, { foreignKey: 'customerId', unique: true });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
