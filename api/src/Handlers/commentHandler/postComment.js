@@ -3,10 +3,9 @@ const createComment = require("../../Controllers/commentController/postComment.j
 
 
 const comments = async (req, res) => {
-  const { text, calification, userName } = req.body; 
-  console.log("🚀 ~ file: postComment.js:7 ~ comments ~ req.body:", req.body)
+  const { content, calification } = req.body; 
   try {
-    const newComment = await createComment( text, calification, userName);
+    const newComment = await createComment( content, calification);
     res.status(201).json(newComment);
     console.log("🚀 ~ file: postComment.js:10 ~ comments ~ newComment:", newComment)
   } catch (error) {
