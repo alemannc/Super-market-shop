@@ -8,6 +8,7 @@ const OrderModel = require("./Models/Order.js");
 const ShoppingCartModel = require('./Models/ShoppingCart.js');
 const CategoryModel = require('./Models/Category.js');
  const { DB_DEPLOY } = process.env;
+ const BuyModel = require("./Models/Buy.js");
 
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, {
@@ -51,8 +52,8 @@ productModel(sequelize);
 OrderModel(sequelize);
 ShoppingCartModel(sequelize);
 CategoryModel(sequelize);
-
-const { Product, Customer, Order ,ShoppingCart, Category } = sequelize.models;
+BuyModel(sequelize);
+const { Product, Customer, Order ,ShoppingCart, Category, Buy } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
