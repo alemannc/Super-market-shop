@@ -7,6 +7,7 @@ const delCustomer = require('../Handlers/customerHandler/delCustomer');
 const putCustomer = require('../Handlers/customerHandler/putCustomer');
 const byEmail = require('../Handlers/customerHandler/byEmailHandler');
 const login = require('../Handlers/customerHandler/loginCustomer');
+const verifyToken = require('../utils/verifyToken')
 
 customerRouter.post('/login',(req,res)=>{
     login(req,res);
