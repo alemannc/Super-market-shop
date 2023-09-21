@@ -13,6 +13,7 @@ module.exports = (sequelize) => sequelize.define("ShoppingCart", {
     PriceTotal: {
         type: DataTypes.FLOAT,
         defaultValue: 0,
+        allowNull: true,
     },
 },{ timestamps: false });
 

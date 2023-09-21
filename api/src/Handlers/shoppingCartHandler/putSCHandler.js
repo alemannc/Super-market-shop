@@ -4,7 +4,7 @@ const updateShoppingCart = require("../../Controllers/shoppingCartController/upd
 const putCustomer = async (req,res)=>{
     const {shoppinId,ProductName,PriceTotal}= req.body;
 
-    if(!shoppinId||!QuantityProduct||!ProductName||!SubPrice||!PriceTotal){
+    if(!shoppinId||!ProductName||!PriceTotal){
         res.status(401).json({error:'Missing data!'});
     }
     
