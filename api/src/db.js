@@ -11,6 +11,7 @@ const CategoryModel = require('./Models/Category.js');
 const CommentModel = require("./Models/Comment.js");
 
  const { DB_DEPLOY } = process.env;
+ const BuyModel = require("./Models/Buy.js");
 
 
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
@@ -57,6 +58,7 @@ ShoppingCartModel(sequelize);
 CategoryModel(sequelize);
 CategoryModel(sequelize);
 CommentModel(sequelize);
+BuyModel(sequelize);
 
 const { Product, Customer, Order ,ShoppingCart, Category, Comment } = sequelize.models;
 // Aca vendrian las relaciones

@@ -1,15 +1,10 @@
-const express = require('express');
-const mercadoPagoRouter =express.Router();
-const createOrderMP =require("../Controllers/mercadoPagoController/payment")
+const createOrder = require( "../Controllers/mercadoPagoController/payment");
+const { Router } = require("express");
 
-mercadoPagoRouter.post("/create-order", (req,res)=>{
-    createOrderMP(req,res)
-})
-mercadoPagoRouter.get("/failure", (req,res)=>{
+const router = Router();
 
-})
-mercadoPagoRouter.post("/webhook", (req,res)=>{
+// router.post("/create-order",createOrder)
 
-})
 
-module.exports= mercadoPagoRouter;
+
+module.exports = router;

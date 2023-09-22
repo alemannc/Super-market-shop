@@ -10,7 +10,7 @@ const delProduct = require ('../Handlers/ProductHandler/delProduct.js')
 
 productRouter.post('/',(req,res)=>{
      postProduct(req,res);
-  console.log("🚀 ~ file: productRoutes.js:11 ~ productRouter.post ~ req:", req.body, req.files)
+
  });
     
 productRouter.get('/name',(req,res)=>{
