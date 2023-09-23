@@ -49,6 +49,11 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: true,
       },  
+      discount: {
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        defaultValue: 0
+      }
     },
     {
       timestamps: false, // Desactivar timestamps
