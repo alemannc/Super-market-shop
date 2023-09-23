@@ -17,8 +17,8 @@ server.use((req, res, next) => {
   );
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Content-Range", "products 0-5/10");   //Agregado para el dashboard
-  res.header("Access-Control-Expose-Headers", "Content-Range");//Agregado para el dashboard
+  // res.header("Content-Range", "products 0-5/10");   //Agregado para el dashboard
+  // res.header("Access-Control-Expose-Headers", "Content-Range");//Agregado para el dashboard
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
