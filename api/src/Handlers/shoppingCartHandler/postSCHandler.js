@@ -2,8 +2,8 @@ const createShoppingCart = require("../../Controllers/shoppingCartController/pos
 
 
 const postShoppingCart = async (req,res)=>{
-    const {ProductName,PriceTotal,CustomerId} = req.body;
-    console.log(ProductName,PriceTotal,CustomerId, "HANDLEER")
+    const {ProductName,PriceTotal,customerId} = req.body;
+    console.log(ProductName,PriceTotal,customerId, "HANDLEER")
     
     try {
         if(!ProductName){
@@ -11,11 +11,11 @@ const postShoppingCart = async (req,res)=>{
         }else if(PriceTotal<0){
             res.status(401).json({error:'Missing data. Price Total!'});
         }
-        else if(!CustomerId){
+        else if(!customerId){
             res.status(401).json({error:'Missing data. CustomerId!'});
         }
         else{
-            const newShoppingCart= await createShoppingCart({ProductName,PriceTotal},CustomerId);
+            const newShoppingCart= await createShoppingCart({ProductName,PriceTotal},customerId);
             res.status(200).json(newShoppingCart);
         }
     } catch (error) {
