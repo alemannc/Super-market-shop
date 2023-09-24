@@ -1,15 +1,16 @@
 const express = require('express');
-const commentRouter =express.Router();
+const commentRouter = express.Router();
 const postComment = require("../Handlers/commentHandler/postComment.js");
-const getAllComment = require ('../Handlers/commentHandler/getComment.js')
+const getAllComment = require('../Handlers/commentHandler/getComment.js')
+const verifyToken = require('../utils/verifyToken')
 
-commentRouter.post('/',(req,res)=>{
-     postComment(req,res);
+commentRouter.post('/', verifyToken, (req, res) => {
+   postComment(req, res);
 
- });
+});
 
- commentRouter.get('/',(req,res)=>{
-    getAllComment(req, res);
- });
+commentRouter.get('/', verifyToken, (req, res) => {
+   getAllComment(req, res);
+});
 
- module.exports = commentRouter;
+module.exports = commentRouter;
