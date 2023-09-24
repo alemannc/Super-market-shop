@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     "Buy",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         autoIncrement: true,
         primaryKey: true,
       },
@@ -13,14 +13,29 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      provider: {
+      fechapago: {
         type: DataTypes.STRING,
+        allowNull: true,
+      },
+      payer: {
+        type: DataTypes.JSONB,
+        allowNull: true,
+      },
+      provider: {
+        type: DataTypes.STRING, //// borrar este campo *****
         allowNull: false,
-        defaultValue: "stripe",
       },
       total: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      cart: {
+        type: DataTypes.JSONB,
+        allowNull: true,
+      },
+      estado: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       card: {
         type: DataTypes.JSONB,
