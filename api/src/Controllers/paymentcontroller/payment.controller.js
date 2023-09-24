@@ -49,9 +49,10 @@ exports.receiveWebhook = async (req, res) => {
 
   try {
     const { data } = await axios.get(url, {
-      headers: { authorization: `Bearer TEST-732264203499224-091212-93394bb9fe841f321b6ccdd7e4fd3b91-139153273` },
+      headers: { authorization: `Bearer APP_USR-8203424602930700-091210-b1e878bf3417669e6bf645b353c2a858-1477554798` },
     });
 
+      console.log("WEBHOOK::",data);
     const {
       id,
       card,
@@ -60,15 +61,24 @@ exports.receiveWebhook = async (req, res) => {
       payment_method,
       transaction_amount,
       external_reference,
+      date_created, //fecha
+      payer,
+      status,
+      additional_info,
     } = data;
+    const items = additional_info.items; // Accede a la propiedad `items` dentro de `additional_info`
 
     const datosCompra = {
       id: id,
       name: description,
       provider: order.type,
       card: { card, payment_method },
+      fechapago: date_created,
+      payer:{payer},
+      estado:status,
       UserId: external_reference,
       total: transaction_amount,
+      cart: items,
     };
     console.log("DATOS COMPRA:::", datosCompra);
     
