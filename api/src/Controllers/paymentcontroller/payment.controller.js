@@ -2,7 +2,7 @@ const mercadopago = require("mercadopago");
 // Descomenta la siguiente línea si estás utilizando un archivo de configuración
 // const { MERCADOPAGO_API_KEY } = require("../config.js");
 const axios = require("axios");
-const {Buy} = require ("../../db")
+const { Buy } = require("../../db")
 
 exports.createOrder = async (req, res) => {
   mercadopago.configure({
@@ -41,9 +41,11 @@ exports.createOrder = async (req, res) => {
 exports.receiveWebhook = async (req, res) => {
   const transactionId = req.query['data.id'];
   // Verificar si transactionId está vacío
+  const userId = req.query['userId']; // Extrae el userId de los parámetros de la consulta
   if (!transactionId) {
     return res.status(400).json({ Error: "Falta el ID de transacción en la consulta." });
   }
+  const userData = req.body.user;
 
   const url = `https://api.mercadopago.com/v1/payments/${transactionId}`;
 
@@ -52,7 +54,7 @@ exports.receiveWebhook = async (req, res) => {
       headers: { authorization: `Bearer APP_USR-8203424602930700-091210-b1e878bf3417669e6bf645b353c2a858-1477554798` },
     });
 
-      console.log("WEBHOOK::",data);
+    console.log("WEBHOOK::", data);
     const {
       id,
       card,
@@ -67,21 +69,22 @@ exports.receiveWebhook = async (req, res) => {
       additional_info,
     } = data;
     const items = additional_info.items; // Accede a la propiedad `items` dentro de `additional_info`
-
+    const iduser = additional_info.payer;
     const datosCompra = {
       id: id,
       name: description,
       provider: order.type,
       card: { card, payment_method },
       fechapago: date_created,
-      payer:{payer},
-      estado:status,
+      payer: { payer },
+      estado: status,
       UserId: external_reference,
       total: transaction_amount,
       cart: items,
+      iduser:iduser
     };
     console.log("DATOS COMPRA:::", datosCompra);
-    
+
     const createCompra = await Buy.create(datosCompra);
     // Realizar aquí el procesamiento de los datos de la compra según tus necesidades
 
