@@ -23,7 +23,7 @@ exports.createOrder = async (req, res) => {
         // pending: "https://e720-190-237-16-208.sa.ngrok.io/pending",
         // failure: "https://e720-190-237-16-208.sa.ngrok.io/failure",
       },
-      notification_url: "https://df89-181-235-106-146.ngrok-free.app/mercadoPago/webhook",
+      // notification_url: "https://df89-181-235-106-146.ngrok-free.app/mercadoPago/webhook",
     });
 
     // console.log("RESULTADO:::",result);
@@ -63,13 +63,13 @@ exports.receiveWebhook = async (req, res) => {
       payment_method,
       transaction_amount,
       external_reference,
-      date_created, //fecha
+      date_created, 
       payer,
       status,
       additional_info,
     } = data;
-    const items = additional_info.items; // Accede a la propiedad `items` dentro de `additional_info`
-    const iduser = additional_info.payer;
+    const items = additional_info.items; 
+    const iduser = additional_info.payer.first_name;
     const datosCompra = {
       id: id,
       name: description,
@@ -86,7 +86,7 @@ exports.receiveWebhook = async (req, res) => {
     console.log("DATOS COMPRA:::", datosCompra);
 
     const createCompra = await Buy.create(datosCompra);
-    // Realizar aquí el procesamiento de los datos de la compra según tus necesidades
+   
 
     // Si todo sale bien, responder con un OK
     return res.status(200).send("OK");
