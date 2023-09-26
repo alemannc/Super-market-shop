@@ -9,7 +9,7 @@ commentRouter.post('/', verifyToken, (req, res) => {
 
 });
 
-commentRouter.get('/', verifyToken, (req, res) => {
+commentRouter.get('/', (req, res) => {
    getAllComment(req, res);
 });
 
