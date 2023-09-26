@@ -12,7 +12,6 @@ const getallComment = async () => {
 
   if (CommentFind.length > 0) {
     return CommentFind;
-    console.log("🚀 ~ file: getComment.js:15 ~ getallComment ~ CommentFind:", CommentFind)
   } else {
     return [];
   }
