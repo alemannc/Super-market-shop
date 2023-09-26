@@ -1,8 +1,26 @@
 const axios = require("axios");
 const updateShoppingCart = require("../../Controllers/shoppingCartController/updateShoppingCart");
 
+
+function combineProductsByName(products) {
+  const combinedProducts = {};
+
+  for (const product of products) {
+    const { productDetails, quantity } = product;
+    const productId = productDetails.id;
+
+    if (combinedProducts[productId]) {
+      combinedProducts[productId].quantity += quantity;
+    } else {
+      combinedProducts[productId] = { productDetails, quantity };
+    }
+  }
+
+  return Object.values(combinedProducts);
+}
+
 const putCustomer = async (req, res) => {
-  const { shoppinId, ProductName, PriceTotal } = req.body;
+  let { shoppinId, ProductName, PriceTotal } = req.body;
 
   if (!shoppinId) {
     res.status(401).json({ error: 'Missing data. Shopping ID!' });
@@ -12,8 +30,11 @@ const putCustomer = async (req, res) => {
     res.status(401).json({ error: 'Missing data. Price Total!' });
   } else {
     try {
+      const combinedProducts = combineProductsByName(ProductName);
+      console.log("🚀 ~ file: putSCHandler.js:34 ~ putCustomer ~ combinedProducts:", combinedProducts)
+   
       const updatedShopping = await updateShoppingCart(shoppinId, {
-        ProductName,
+        ProductName: combinedProducts,
         PriceTotal,
       });
       res.status(200).json(updatedShopping);

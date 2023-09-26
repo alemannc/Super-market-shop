@@ -60,13 +60,18 @@ CategoryModel(sequelize);
 CommentModel(sequelize);
 BuyModel(sequelize);
 
-const { Product, Customer, Order ,ShoppingCart, Category, Comment } = sequelize.models;
+const { Product, Customer, Order ,ShoppingCart, Category, Comment, Buy } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
 
 // Ralacion cliente-Producto- muchos a muchos muchos clientes pueden comprar muchos productos
 Customer.belongsToMany(Product, { through: "Customer-Product", timestamps: false });
 Product.belongsToMany(Customer, { through: "Customer-Product", timestamps: false });
+
+// Relacion customer - Buy Relacion de uno a muchos
+
+Customer.hasMany(Buy);
+Buy.belongsTo(Customer);
 
 // Relacion customer - Order Relacion de uno a muchos
 

@@ -1,22 +1,29 @@
-const { Product,Category } = require("../../db");
+const { Product, Category, Comment, Customer } = require("../../db");
 
 const getallProduct = async () => {
-    const productFind= await Product.findAll({
-        include:{
-            model: Category,
-            attributes: ['name'],
-            through:{
-              attributes:[]
-            }
-          }
-
-    });
-    if(productFind.length>0){
+  const productFind = await Product.findAll({
+    include: [
+      {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+      {
+        model: Comment, 
+        include: {
+          model: Customer,
+          attributes: ["name"],
+        },
+      },
+    ],
+  });
+  if (productFind.length > 0) {
     return productFind;
-    }else{
-        return []
-    }
+  } else {
+    return [];
+  }
 };
-
 
 module.exports = getallProduct;

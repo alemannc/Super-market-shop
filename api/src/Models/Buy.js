@@ -9,6 +9,14 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
+      // iduser: {
+      //      type: DataTypes.UUID,
+      //      allowNull: true,
+      //      references: {
+      //          model: 'Customers',
+      //          key: 'id',
+      //      }
+      //  },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,7 +30,7 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       provider: {
-        type: DataTypes.STRING, //// borrar este campo *****
+        type: DataTypes.STRING,
         allowNull: false,
       },
       total: {
