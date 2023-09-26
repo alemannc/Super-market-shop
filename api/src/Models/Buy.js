@@ -9,14 +9,14 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      iduser: {
-           type: DataTypes.UUID,
-           allowNull: true,
-           references: {
-               model: 'Customers',
-               key: 'id',
-           }
-       },
+      // iduser: {
+      //      type: DataTypes.UUID,
+      //      allowNull: true,
+      //      references: {
+      //          model: 'Customers',
+      //          key: 'id',
+      //      }
+      //  },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

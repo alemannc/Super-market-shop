@@ -81,7 +81,7 @@ exports.receiveWebhook = async (req, res) => {
       UserId: external_reference,
       total: transaction_amount,
       cart: items,
-      iduser:iduser
+      CustomerId:iduser
     };
     console.log("DATOS COMPRA:::", datosCompra);
 
