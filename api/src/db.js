@@ -70,9 +70,8 @@ Product.belongsToMany(Customer, { through: "Customer-Product", timestamps: false
 
 // Relacion customer - Buy Relacion de uno a muchos
 
-Customer.hasMany(Buy, { foreignKey: 'iduser' });
+Customer.hasMany(Buy);
 Buy.belongsTo(Customer);
-
 
 // Relacion customer - Order Relacion de uno a muchos
 
