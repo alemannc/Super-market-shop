@@ -6,10 +6,10 @@ const { Category } = require('../../db.js');
 
 const postProducto = async (req,res)=>{
   const { name, price, description, stock, brand, expirationdate, categories } = req.body;
-    console.log("🚀 ~ file: postProduct.js:11 ~ postProducto ~ req.body:", req.body)
+    // console.log("🚀 ~ file: postProduct.js:11 ~ postProducto ~ req.body:", req.body)
      const image = req.files['image[]'].tempFilePath;
     // const image = req.files.image.tempFilePath;
-    console.log("🚀 ~ file: postProduct.js:12 ~ postProducto ~ image:", image)
+    // console.log("🚀 ~ file: postProduct.js:12 ~ postProducto ~ image:", image)
 
   try {
 
@@ -44,7 +44,7 @@ const postProducto = async (req,res)=>{
   
   
       res.status(201).json(newProducto);
-      console.log("🚀 ~ file: postProduct.js:46 ~ postProducto ~ newProducto:", newProducto)
+      // console.log("🚀 ~ file: postProduct.js:46 ~ postProducto ~ newProducto:", newProducto)
     } catch (error) {
         res.status(404).json({ Error: error.message }) || res.status(500).json({ Error: error.message }); 
     }

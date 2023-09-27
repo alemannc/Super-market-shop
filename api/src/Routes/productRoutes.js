@@ -59,7 +59,7 @@ productRouter.put('/:productId', verifyToken, (req, res) => {
 productRouter.post('/bulk', async(req, res) =>{
 	
 	const { products } = req.body;
-  console.log(products);
+  // console.log(products);
 
 	
 	const created = await createBulkProduct(products)

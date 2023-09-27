@@ -3,7 +3,7 @@ const createShoppingCart = require("../../Controllers/shoppingCartController/pos
 
 const postShoppingCart = async (req,res)=>{
     const {ProductName,PriceTotal,customerId} = req.body;
-    console.log(ProductName,PriceTotal,customerId, "HANDLEER")
+    // console.log(ProductName,PriceTotal,customerId, "HANDLEER")
     
     try {
         if(!ProductName){

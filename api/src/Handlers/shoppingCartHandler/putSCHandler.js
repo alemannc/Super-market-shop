@@ -31,7 +31,7 @@ const putCustomer = async (req, res) => {
   } else {
     try {
       const combinedProducts = combineProductsByName(ProductName);
-      console.log("🚀 ~ file: putSCHandler.js:34 ~ putCustomer ~ combinedProducts:", combinedProducts)
+      // console.log("🚀 ~ file: putSCHandler.js:34 ~ putCustomer ~ combinedProducts:", combinedProducts)
    
       const updatedShopping = await updateShoppingCart(shoppinId, {
         ProductName: combinedProducts,
