@@ -6,10 +6,8 @@ const { Category } = require('../../db.js');
 
 const postProducto = async (req,res)=>{
   const { name, price, description, stock, brand, expirationdate, categories } = req.body;
-    // console.log("🚀 ~ file: postProduct.js:11 ~ postProducto ~ req.body:", req.body)
-     const image = req.files['image[]'].tempFilePath;
+    const image = req.files['image[]'].tempFilePath;
     // const image = req.files.image.tempFilePath;
-    // console.log("🚀 ~ file: postProduct.js:12 ~ postProducto ~ image:", image)
 
   try {
 
