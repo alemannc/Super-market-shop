@@ -12,13 +12,13 @@ const buyRouter = require('./buyRoutes')
 const router = Router();
 
 router.use('/customer', customerRouter);
-router.use("/orders",ordersRouter);
 router.use("/product", productRouter);
 router.use("/mercadoPago", payment)
 router.use("/shoppingCart", shoppingCartRouter)
 router.use('/category', categoriesRouter);
 router.use('/comment', commentRouter);
 router.use('/buy', buyRouter);
+// router.use("/buy/:id",ordersRouter);
 
 
 

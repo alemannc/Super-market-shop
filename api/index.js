@@ -16,7 +16,7 @@ conn.sync({
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 })
-  
+
   .then(async () => {
     await transporter.verify().then(() => {
       console.log("Email service: ✅");
@@ -27,5 +27,3 @@ conn.sync({
 //productMouckup()
 
   //})
-  
-  
