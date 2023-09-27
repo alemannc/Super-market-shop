@@ -56,15 +56,15 @@ productRouter.put('/:productId', verifyToken, (req, res) => {
 // });
 
 
-productRouter.post('/bulk', async(req, res) =>{
+// productRouter.post('/bulk', async(req, res) =>{
 	
-	const { products } = req.body;
-  // console.log(products);
+// 	const { products } = req.body;
+//   console.log(products);
 
 	
-	const created = await createBulkProduct(products)
-	res.status(200).json({response: "created"});
+// 	const created = await createBulkProduct(products)
+// 	res.status(200).json({response: "created"});
 	
-});
+// });
 
 module.exports = productRouter;
