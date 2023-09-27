@@ -2,7 +2,7 @@ const { Category } = require("../../db");
 
 const findCategoryById = async (id) => {
   const category = await Category.findByPk(id);
-  console.log()
+  // console.log()
   return category;
 };
 

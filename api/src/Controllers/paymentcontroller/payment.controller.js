@@ -54,7 +54,7 @@ exports.receiveWebhook = async (req, res) => {
       headers: { authorization: `Bearer APP_USR-8203424602930700-091210-b1e878bf3417669e6bf645b353c2a858-1477554798` },
     });
 
-    console.log("WEBHOOK::", data);
+    // console.log("WEBHOOK::", data);
     const {
       id,
       card,
@@ -83,7 +83,7 @@ exports.receiveWebhook = async (req, res) => {
       cart: items,
       CustomerId:iduser
     };
-    console.log("DATOS COMPRA:::", datosCompra);
+    // console.log("DATOS COMPRA:::", datosCompra);
 
     const createCompra = await Buy.create(datosCompra);
    

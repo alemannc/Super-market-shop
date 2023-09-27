@@ -3,7 +3,7 @@ const getOrderById = require('../../Controllers/OrderController/getOrderById');
 
 const orderById = async (req, res) => {
     const {id} = req.params;
-    console.log(id);
+    // console.log(id);
     //console.log("🚀 ~ file: getOrderById.js:6 ~ orderById ~ d:", id)
     try {
         const orderId = await getOrderById(id);

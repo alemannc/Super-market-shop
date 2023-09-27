@@ -11,7 +11,7 @@ const allBuyUser = async () => {
       ],
     });
 
-    console.log("TRAE:", allBuy);
+    // console.log("TRAE:", allBuy);
 
     if (!allBuy.length) return { message: "No hay compras registradas" };
 
