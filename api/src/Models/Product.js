@@ -39,16 +39,21 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      categories: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      available: {
+      // categories: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
+     available: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
-      }, 
-
+      },  
+      discount: {
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        defaultValue: 0
+      }
+      
     },
     {
       timestamps: false, // Desactivar timestamps

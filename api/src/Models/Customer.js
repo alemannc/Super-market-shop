@@ -2,12 +2,12 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 
-    sequelize.define('customer', {
-        customerID: {
+    sequelize.define('Customer', {
+        id: {
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4, 
-            allowNull: false,
+            unique: true,
           },
           name: {
             type: DataTypes.STRING,
@@ -44,6 +44,14 @@ module.exports = (sequelize) => {
             validate: {
               notEmpty: true,
             },
+          },
+          role: {
+            type: DataTypes.ENUM("user", "admin", "BAN"),
+            defaultValue: "user",
+          },
+          provider: {
+            type: DataTypes.ENUM("local", "google", "facebook"),
+            defaultValue: "local",
           },
   
     },{ timestamps: false });
