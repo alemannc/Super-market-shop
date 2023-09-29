@@ -83,7 +83,7 @@ exports.receiveWebhook = async (req, res) => {
       cart: items,
       CustomerId:iduser
     };
-    // console.log("DATOS COMPRA:::", datosCompra);
+     console.log("DATOS COMPRA:::", datosCompra);
 
     const createCompra = await Buy.create(datosCompra);
    
