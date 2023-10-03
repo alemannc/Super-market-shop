@@ -2,7 +2,8 @@ const mercadopago = require("mercadopago");
 // Descomenta la siguiente línea si estás utilizando un archivo de configuración
 // const { MERCADOPAGO_API_KEY } = require("../config.js");
 const axios = require("axios");
-const { Buy } = require("../../db")
+const { Buy, Customer } = require("../../db")
+const sendEmailConPlantilla = require('../../Nodemailer/sendEmailConPlantilla')
 
 exports.createOrder = async (req, res) => {
   mercadopago.configure({
@@ -63,12 +64,12 @@ exports.receiveWebhook = async (req, res) => {
       payment_method,
       transaction_amount,
       external_reference,
-      date_created, 
+      date_created,
       payer,
       status,
       additional_info,
     } = data;
-    const items = additional_info.items; 
+    const items = additional_info.items;
     const iduser = additional_info.payer.first_name;
     const datosCompra = {
       id: id,
@@ -81,12 +82,30 @@ exports.receiveWebhook = async (req, res) => {
       UserId: external_reference,
       total: transaction_amount,
       cart: items,
-      CustomerId:iduser
+      CustomerId: iduser
     };
     // console.log("DATOS COMPRA:::", datosCompra);
 
     const createCompra = await Buy.create(datosCompra);
-   
+
+    const Idcustomer = datosCompra.CustomerId;
+    const customer = await Customer.findByPk(Idcustomer);
+
+    if (customer && customer.email) {
+      const userEmail = customer.email;
+
+      // Envía el correo electrónico al cliente
+      const emailTemplate = datosCompra.estado;; // Elige una plantilla de correo
+      const emailData = {
+        cart: datosCompra.cart,
+        id: datosCompra.id, // Agrega el número de ID al objeto de datos
+      };
+      console.log("EmailData:",emailData)
+
+      sendEmailConPlantilla(userEmail, emailTemplate, emailData);
+    } else {
+      console.log("No se encontró el correo electrónico del cliente.");
+    }
 
     // Si todo sale bien, responder con un OK
     return res.status(200).send("OK");
