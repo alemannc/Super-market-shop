@@ -31,10 +31,28 @@ buyRouter.get("/:id", async (req, res) => {
     } catch(error) {
          res.status(500).json({ error: error.message });
     }
+});
 
+buyRouter.put("/:id", async (req, res) => {
 
+  const {id} = req.params;
+  try {
+    const updatedEstado = req.body.estado;
+    const orderId = await getOrderById(id);
+    // console.log(orderId);
 
+    if(orderId){
+      await orderId.update({estado: updatedEstado});
+      await orderId.save();
 
+      res.status(200).send(orderId);
+    }
+    else{
+        res.status(404).send("Order Id not found");
+    }
+  } catch(error) {
+       res.status(500).json({ error: error.message });
+  }
 });
 
 
